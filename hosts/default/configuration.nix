@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nixos/hypr/hyprland.nix
+      # ../../modules/nixos/hypr/hyprland.nix
       inputs.home-manager.nixosModules.home-manager
     ];
   
@@ -115,22 +115,6 @@
 
   # packages can be added here but I put mine in /etc/nixos/hosts/
   environment.systemPackages = with pkgs; [];
-
-  # environment.etc."Kitty/kitty.conf".text = ''
-  #   confirm_os_window_close -1
-  #   allow_closing = yes
-  # '';
-  
-
-
-  # environment.variables = {
-  #   XCURSOR_THEME = "Breeze";
-  #   XCURSOR_SIZE = "24";
-  # };
-
-  # fonts.packages = with pkgs; [
-  #   font-awesome
-  # ];
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];

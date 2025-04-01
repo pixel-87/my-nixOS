@@ -46,6 +46,7 @@
     htop # process viewer
     tree # dir tree display
     font-awesome # icon font
+    onedrive
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
