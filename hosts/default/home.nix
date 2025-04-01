@@ -18,13 +18,13 @@
   # xdg.configFile."hypr/hyprland.conf".source = ./hypr/hyprland.conf;
 
   imports = [
+    ../../modules/home-manager/waybar/waybar.nix 
     ../../modules/home-manager/hypr/hyprland.nix
-    ../../modules/home-manager/waybar/waybar.nix  # Include the filename in the path
   ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages =with pkgs; [
+  home.packages = with pkgs; [
     waybar
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -62,9 +62,11 @@
     # '';
   };
 
-  wayland.windowManager.hyprland = {
+  programs.hyprland = {
     enable = true;
-    systemd.enable = true;
+    # You can configure settings directly here
+    # or reference your existing config file
+    extraConfig = builtins.readFile ../../modules/nixos/hypr/hyprland.conf;
   };
 
   programs.waybar = {

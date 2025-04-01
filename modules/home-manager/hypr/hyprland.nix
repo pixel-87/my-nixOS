@@ -1,14 +1,17 @@
 { config, lib, pkgs, ... }:
 
 {
-  # User-level Hyprland configuration
+  # Use home.file instead of programs.hyprland
   home.file = {
     ".config/hypr/hyprland.conf" = {
       source = ../../../modules/nixos/hypr/hyprland.conf;
     };
-  # User-level Hyprland packages
+  };
+    
+  # Any user-specific packages needed for your Hyprland setup
   home.packages = with pkgs; [
-    # Add any specific Hyprland-related packages you need
-    # For example: wl-clipboard xdg-desktop-portal-hyprland
+    wl-clipboard
+    rofi-wayland
+    # Other tools
   ];
 }
