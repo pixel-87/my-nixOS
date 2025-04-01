@@ -62,13 +62,6 @@
     # '';
   };
 
-  programs.hyprland = {
-    enable = true;
-    # You can configure settings directly here
-    # or reference your existing config file
-    extraConfig = builtins.readFile ../../modules/nixos/hypr/hyprland.conf;
-  };
-
   programs.waybar = {
     enable = true;
   };

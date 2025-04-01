@@ -103,7 +103,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-    "pixel" = import ./home.nix { inherit pkgs config lib; inputs = inputs; };
+    "pixel" = import ./home.nix;
     };
   };
 

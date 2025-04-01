@@ -2,8 +2,8 @@
 
 let
   # Read the config files directly - note the path is relative to THIS file
-  waybarConfig = builtins.readFile ../../../nixos/waybar/config.json;
-  waybarStyle = builtins.readFile ../../../nixos/waybar/style.css;
+  waybarConfig = builtins.readFile ../../../modules/nixos/waybar/config.json;
+  # waybarStyle = builtins.readFile ../../../modules/nixos/waybar/style.css;
 in
 {
   # User-level waybar configuration
@@ -12,9 +12,9 @@ in
       text = waybarConfig;
     };
     
-    ".config/waybar/style.css" = {
-      text = waybarStyle;
-    };
+    #".config/waybar/style.css" = {
+    #  text = waybarStyle;
+    #};
   };
   
   # Make sure waybar is installed
