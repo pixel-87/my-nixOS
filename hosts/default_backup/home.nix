@@ -15,6 +15,8 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
+  # xdg.configFile."hypr/hyprland.conf".source = ./hypr/hyprland.conf;
+
   imports = [
     ../../modules/home-manager/waybar/waybar.nix 
     ../../modules/home-manager/hypr/hyprland.nix
@@ -26,26 +28,11 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    waybar # status bar
-    obsidian # note taking 
-    vim # text editor
-    neovim # text editor
-    git # version control
-    gh # github cli
-    wget # file downloader
-    dunst # notification daemon
-    libnotify # desktop notifications
-    swww # wayland wallpaper
-    kitty # terminal
-    rofi-wayland # application launcher
-    networkmanagerapplet # network manager gui
-    discord # communications
-    firefox # web browser
-    fastfetch # system info
-    kdePackages.breeze-gtk # GTK theme - for cursor
-    htop # process viewer
-    tree # dir tree display
-    font-awesome # icon font
+    waybar
+    obsidian
+    # # Adds the 'hello' command to your environment. It prints a friendly
+    # # "Hello, world!" when run.
+    # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -61,11 +48,12 @@
     # '')
   ];
 
-
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    # ".config/hypr/hyprland.conf".source = ../../modules/nixos/hypr/hyprland.conf;
+    #".config/waybar/config.json".source = ../../../../modules/nixos/waybar/config.json;
+    #".config/waybar/style.css".source = ../../../../modules/nixos/waybar/style.css;
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -76,23 +64,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-  };
-
-  home.sessionVariables = { # changed from environment.variables to home.sessionVariables
-    XCURSOR_THEME = "Breeze";
-    XCURSOR_SIZE = "24";
-  };
-
-  # Font settings
-  #fonts.packages = with pkgs; [
-  #  pkgs.font-awesome # added pkgs. to font-awesome
-  #];
-
-  programs.kitty = {
-    enable = true;
-    settings = {
-      confirm_os_window_close = "no";
-    };
   };
 
   programs.waybar = {

@@ -13,10 +13,11 @@
     ];
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # Homemanager
   # home-manager.useGlobalPkgs = true;
   # home-manager.useUserPackages = true;
+
+  # home-manager.users.pixel = import ./home.nix;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -112,25 +113,44 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    waybar
+    dunst
+    libnotify
+    swww
+    kitty
+    rofi-wayland
+    networkmanagerapplet
+    discord
+    kdePackages.dolphin
+    git
+    gh
+    font-awesome
+    firefox
+    fastfetch
+    kdePackages.breeze-gtk
+    htop
+    neovim
+    tree
+  ];
 
-  # packages can be added here but I put mine in /etc/nixos/hosts/
-  environment.systemPackages = with pkgs; [];
-
-  # environment.etc."Kitty/kitty.conf".text = ''
-  #   confirm_os_window_close -1
-  #   allow_closing = yes
-  # '';
+  environment.etc."Kitty/kitty.conf".text = ''
+    confirm_os_window_close -1
+    allow_closing = yes
+  '';
   
 
 
-  # environment.variables = {
-  #   XCURSOR_THEME = "Breeze";
-  #   XCURSOR_SIZE = "24";
-  # };
+  environment.variables = {
+    XCURSOR_THEME = "Breeze";
+    XCURSOR_SIZE = "24";
+  };
 
-  # fonts.packages = with pkgs; [
-  #   font-awesome
-  # ];
+  fonts.packages = with pkgs; [
+    font-awesome
+  ];
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
