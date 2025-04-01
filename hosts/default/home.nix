@@ -17,9 +17,14 @@
 
   # xdg.configFile."hypr/hyprland.conf".source = ./hypr/hyprland.conf;
 
+  imports = [
+    ../../modules/home-manager/hypr/hyprland.nix
+    ../../modules/home-manager/waybar/waybar.nix  # Include the filename in the path
+  ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages =with pkgs; [
     waybar
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -42,9 +47,9 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".config/hypr/hyprland.conf".source = ../../modules/nixos/hypr/hyprland.conf;
-    ".config/waybar/config.json".source = ../../modules/nixos/waybar/config.json;
-    ".config/waybar/style.css".source = ../../modules/nixos/waybar/style.css;
+    # ".config/hypr/hyprland.conf".source = ../../modules/nixos/hypr/hyprland.conf;
+    #".config/waybar/config.json".source = ../../../../modules/nixos/waybar/config.json;
+    #".config/waybar/style.css".source = ../../../../modules/nixos/waybar/style.css;
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -69,7 +74,7 @@
   programs.git = {
     enable = true;
     userName = "pixel-87";
-    userEmail = "pixel-87@users.noreply.github.com"
+    userEmail = "pixel-87@users.noreply.github.com";
   };
 
   # Home Manager can also manage your environment variables through

@@ -2,13 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/nixos/hypr/hyprland.nix
+      ../../modules/nixos/hypr/hyprland.nix
       inputs.home-manager.nixosModules.home-manager
     ];
   
@@ -103,7 +103,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "pixel" = import ./home.nix { inherit pkgs config lib; inputs = inputs; };
+    "pixel" = import ./home.nix { inherit pkgs config lib; inputs = inputs; };
     };
   };
 

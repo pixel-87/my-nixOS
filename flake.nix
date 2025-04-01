@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration with Hyprland";
+  description = "My NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -7,34 +7,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }:
-    let
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      nixosConfigurations = {
-        "default" = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/default/configuration.nix
-            ./modules/nixos/hypr/hyprland.nix
-            ./modules/nixos/waybar/waybar.nix
-            (home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.pixel = import ./hosts/default/home.nix;
-              home-manager.extraSpecialArgs = {
-                inherit hyprland;
-              };
-            })
-          ];
-        };
-      };
+      modules = [
+        ./hosts/default/configuration.nix
+        home-manager.nixosModules.home-manager
+      ];
+      specialArgs = { inherit inputs; };
     };
+  };
 }

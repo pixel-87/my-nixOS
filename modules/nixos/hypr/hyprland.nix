@@ -1,22 +1,18 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  # Enable Hyprland window manager
+  # System-level Hyprland configuration
   programs.hyprland = {
     enable = true;
-    # System-wide Hyprland settings can go here
     xwayland.enable = true;
   };
 
-  # Essential services for proper Wayland/Hyprland operation
-  security.polkit.enable = true;
-  hardware.opengl.enable = true;
+  # Enable XDG portal for screen sharing
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
   };
-
-  # Additional Hyprland configuration
-  home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
 }
