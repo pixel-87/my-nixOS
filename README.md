@@ -10,3 +10,4 @@ My personal nixOS config files
 - [ ] finish waybar configs
 - [ ] Setup dual monitors for pc to be on top of each other instead of side by side
 - [ ] virtual desktops - mainly for laptop
+- [ ] grub boot loader for choosing dual booy
