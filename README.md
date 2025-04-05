@@ -1,13 +1,17 @@
 My personal nixOS config files
 
 ## TODO
-- [ ] edit flake.nix to allow for individual machine configurations
-- [ ] create home-manager nix files and configuration.nix for all machines, will all inherit from default configuration.nix and home.nix
-- [ ] auto git commit and push when changing nix configs
-- [ ] setup ondrive for obsidian notes
-- [ ] add backgrounds
-- [ ] jetbrains mono font for obsidian
-- [ ] finish waybar configs
+
+### General
+- [ ] Edit flake.nix to allow for individual machine configurations
+- [ ] Create home-manager nix files and configuration.nix for all machines, will all inherit from default configuration.nix and home.nix
+- [ ] Auto git commit and push on successful rebuild
+- [ ] Finish waybar configs
+- [ ] Virtual desktops - mainly for laptop
 - [ ] Setup dual monitors for pc to be on top of each other instead of side by side
-- [ ] virtual desktops - mainly for laptop
-- [ ] grub boot loader for choosing dual booy
+- [ ] Boot loader to choose os.
+
+### Personal
+- [ ] Setup ondrive for obsidian notes
+- [ ] Add backgrounds
+- [ ] Jetbrains mono font for obsidian
